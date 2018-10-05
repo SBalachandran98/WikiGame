@@ -22,18 +22,27 @@ if(isset($_POST['loginBtn'])){
         $statement = $db->prepare($sqlQuery);
         $statement->execute(array(':username' => $user));
 
-        while($row = $statement->fetch()){
+
+        if($row = $statement->fetch())
+        {
             $id = $row['id'];
             $hashed_password = $row['password'];
             $username = $row['username'];
-
-            if(password_verify($password, $hashed_password)){
+            if(password_verify($password, $hashed_password))
+            {
+                echo "<script type='text/javascript'>alert('Login Successful');</script>";
                 $_SESSION['id'] = $id;
                 $_SESSION['username'] = $username;
                 header("location: index.php");
-            }else{
-                $result = "<p style='padding: 20px; color: red; border: 1px solid black;'> Invalid username or password</p>";
             }
+            else
+            {
+                echo "<script type='text/javascript'>alert('Invalid password');</script>";
+            }
+        }
+        else
+        {
+            echo "<script type='text/javascript'>alert('Invalid username');</script>";
         }
 
     }else{
@@ -52,22 +61,44 @@ if(isset($_POST['loginBtn'])){
 <head lang="en">
     <meta charset="UTF-8">
     <title>Login Page</title>
+    <link href="format.css" rel="stylesheet">
 </head>
-<h2>Wiki Game</h2>
+<div id="loginContainer" class="container">
+    <h2>Wiki Game</h2>
+    <h3>Login Form</h3>
 
-<h3>Login Form</h3>
+    <form method="post" action="">
+        <table align="center">
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" value="" name="username"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" value="" name="password"></td>
+            </tr>
+        </table>
+        
+        
+        <input class="myBtn" type="button" name="backBtn" value="Back" onclick="window.location='index.php';">
 
-<?php if(isset($result)) echo $result; ?>
-<?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
-<form method="post" action="">
-    <table>
-        <tr><td>Username:</td> <td> <input type="text" value="" name="username"></td></tr>
-        <tr><td>Password:</td> <td> <input type="password" value="" name="password"></td></tr>
-        <tr><td></td><td><input style="float: right"; type="submit" name="loginBtn" value="Sign in"></td></tr>
+        <input class="myBtn" type="submit" name="loginBtn" value="Sign in">
+    </form>
+</div>
 
-    </table>
-</form>
+<div id="errorContainer">
+    <?php 
+        if(isset($result))
+            echo "<script type='text/javascript'>alert('$result');</script>";
+    ?>
 
-<p><a href="index.php">Back</a></p>
+    <?php 
+        if(!empty($form_errors))
+        {
+            $err = implode(" and ",$form_errors);
+            echo "<script type='text/javascript'>alert('$err');</script>";
+        }
+     ?>
+<div>
 </body>
 </html>
