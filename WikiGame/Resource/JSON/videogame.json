@@ -1,0 +1,36 @@
+[{
+	"question": "In what Game Series are Golden Rings used as Life-energy and Money  ?",
+	"option1": "Super Mario Bros",
+	"option2": "Sonic the Hedgehog",
+"option3": "Soul Reaver",
+"option4": "Half-Life",
+"answer": "2"
+}, {
+	"question": "NES was Short for... ?",
+	"option1": "Never Ending Simulation",
+	"option2": "Nintendo Entertainment System",
+	"option3": "New Enterprise System ",
+	"option4": " Not Ever Still",
+	"answer": "2"
+}, {
+	"question": " What was The First Home Console ?",
+	"option1": "NES ",
+	"option2": "Sega Genesis",
+	"option3": "Atari 2600",
+	"option4": "Odyssey",
+	"answer": "4"
+}, {
+	"question": "The Nintendo DS Lite is available in 6 different languages. What language is it not available in ?",
+	"option1": "Spanish",
+	"option2": "Italian",
+	"option3": "German",
+	"option4": "India",
+"answer": "4"
+}, {
+"question": "On the Xbox 360 controller, which of the following won't you find ?",
+	"option1": "A green A button",
+	"option2": "A red O button",
+	"option3": "A joystick",
+	"option4": "A silver dome that glows green",
+	"answer": "2"
+}]
